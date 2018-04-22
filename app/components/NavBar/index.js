@@ -16,7 +16,7 @@ import messages from './messages';
 class NavBar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Navbar fixedToTop className="pt-dark">
+      <Navbar className="pt-dark">
         <NavbarGroup align={Alignment.LEFT}>
           <NavbarHeading>
             <Icon icon={IconNames.GRAPH} iconSize={Icon.SIZE_LARGE} intent={Intent.NONE} />

@@ -11,14 +11,12 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import NavBar from 'components/NavBar';
 import messages from './messages';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <NavBar />
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>

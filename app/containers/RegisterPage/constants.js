@@ -1,0 +1,27 @@
+/*
+ *
+ * RegisterPage constants
+ *
+ */
+
+export const DEFAULT_ACTION = 'app/RegisterPage/DEFAULT_ACTION';
+
+export const CHANGE_LOGIN_ACTION = 'app/RegisterPage/CHANGE_LOGIN_ACTION';
+export const CHANGE_EMAIL_ACTION = 'app/RegisterPage/CHANGE_EMAIL_ACTION';
+export const CHANGE_PASSWORD_ACTION = 'app/RegisterPage/CHANGE_PASSWORD_ACTION';
+
+export const IS_LOADING_LOGIN_CHECKER_ACTION = 'app/RegisterPage/IS_LOADING_LOGIN_CHECKER_ACTION';
+export const IS_LOADING_EMAIL_CHECKER_ACTION = 'app/RegisterPage/IS_LOADING_EMAIL_CHECKER_ACTION';
+
+export const LOGIN_CHECKER_RESPONSE_ACTION = 'app/RegisterPage/LOGIN_CHECKER_RESPONSE_ACTION';
+export const LOGIN_CHECKER_FAILED_ACTION = 'app/RegisterPage/LOGIN_CHECKER_FAILED_ACTION';
+export const EMAIL_CHECKER_RESPONSE_ACTION = 'app/RegisterPage/EMAIL_CHECKER_RESPONSE_ACTION';
+export const EMAIL_CHECKER_FAILED_ACTION = 'app/RegisterPage/EMAIL_CHECKER_FAILED_ACTION';
+
+export const SUBMIT_ACTION = 'app/RegisterPage/SUBMIT_ACTION';
+export const CHANGE_IS_SUBMITTED_ACTION = 'app/RegisterPage/CHANGE_IS_SUBMITTED_ACTION';
+export const SUBMIT_FAILED_ACTION = 'app/RegisterPage/SUBMIT_FAILED_ACTION';
+export const SUBMIT_RESPONSE_ACTION = 'app/RegisterPage/SUBMIT_RESPONSE_ACTION';
+
+export const SAGA_LOGIN_CHECKER_CANCEL = 'app/RegisterPage/SAGA_LOGIN_CHECKER_CANCEL';
+export const SAGA_EMAIL_CHECKER_CANCEL = 'app/RegisterPage/SAGA_EMAIL_CHECKER_CANCEL';
