@@ -9,6 +9,8 @@
  *
  */
 
+import { LS_STATE } from './constants';
+
 const LocalStorage = {
   get: (name, returnDefault = null) => {
     const value = localStorage.getItem(name);
@@ -31,18 +33,25 @@ const getStorage = () => {
   throw new Error('Storage not defined');
 };
 
-export default function get(name, returnDefault = null) {
-  return getStorage().get(name, returnDefault);
-}
-
-export function set(name, data) {
-  return getStorage().set(name, data);
-}
-
-export function remove(name) {
-  return getStorage().remove(name);
-}
-
-export function clear() {
-  return getStorage().clear();
-}
+export const get = (...args) => getStorage().get(...args);
+export const set = (...args) => getStorage().set(...args);
+export const remove = (...args) => getStorage().remove(...args);
+export const clear = (...args) => getStorage().clear(...args);
+export const loadState = () => {
+  try {
+    const storage = getStorage();
+    const state = storage.get(LS_STATE, undefined);
+    return state;
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+    return undefined;
+  }
+};
+export const saveState = (state) => {
+  try {
+    const storage = getStorage();
+    storage.set(LS_STATE, state);
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+  }
+};

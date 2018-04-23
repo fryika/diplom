@@ -17,3 +17,4 @@ export const API_USERS_EMAIL_CHECKER = '/users/emailChecker';
  * Storage Constants
  */
 export const LS_TOKEN = '__very_secret_key_is_here__';
+export const LS_STATE = '__app_state_is_here__';

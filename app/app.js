@@ -15,6 +15,9 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
+import { loadState, saveState } from 'utils/ls';
+import { throttle } from 'lodash';
+
 
 // Import root app
 import App from 'containers/App';
@@ -38,10 +41,14 @@ import { translationMessages } from './i18n';
 import './global-styles';
 
 // Create redux store with history
-const initialState = {};
+const initialState = loadState() || {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}, 1000));
 
 const render = (messages) => {
   ReactDOM.render(
