@@ -22,9 +22,17 @@ export default defineMessages({
     id: 'app.components.Sidebar.register',
     defaultMessage: 'Register',
   },
+  settings: {
+    id: 'app.components.Sidebar.settings',
+    defaultMessage: 'Settings',
+  },
   authSection: {
     id: 'app.components.Sidebar.authSection',
     defaultMessage: 'For more funcs:',
+  },
+  userSection: {
+    id: 'app.components.Sidebar.userSection',
+    defaultMessage: 'Profile',
   },
   generalSection: {
     id: 'app.components.Sidebar.generalSection',

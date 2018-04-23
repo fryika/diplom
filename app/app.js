@@ -16,7 +16,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 import { loadState, saveState } from 'utils/ls';
-import { throttle } from 'lodash';
+import { throttle, pick } from 'lodash';
 
 
 // Import root app
@@ -47,7 +47,7 @@ const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 store.subscribe(throttle(() => {
-  saveState(store.getState());
+  saveState(pick(store.getState().toJS(), ['global', 'language']));
 }, 1000));
 
 const render = (messages) => {

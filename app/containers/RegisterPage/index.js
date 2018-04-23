@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { push as changeLocation } from 'react-router-redux';
@@ -20,7 +20,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectRegisterPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
+// import messages from './messages';
 import { changeLogin, changePassword, changeEmail, submit } from './actions';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -53,7 +53,6 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
           onChangeEmail={this.props.onChangeEmail}
           onClickSubmit={this.props.onClickSubmit}
         />
-        <FormattedMessage {...messages.header} />
       </div>
     );
   }

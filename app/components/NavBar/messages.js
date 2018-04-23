@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.components.NavBar.header',
     defaultMessage: 'Example',
   },
+  login: {
+    id: 'app.components.NavBar.login',
+    defaultMessage: 'Sign-in',
+  },
 });
