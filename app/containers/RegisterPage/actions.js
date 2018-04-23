@@ -18,6 +18,7 @@ import {
   SUBMIT_ACTION,
   CHANGE_IS_SUBMITTED_ACTION,
   SUBMIT_FAILED_ACTION,
+  SUBMIT_RESPONSE_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -106,5 +107,12 @@ export function submitFailed(error) {
   return {
     type: SUBMIT_FAILED_ACTION,
     error,
+  };
+}
+
+export function submitResponse(response) {
+  return {
+    type: SUBMIT_RESPONSE_ACTION,
+    response,
   };
 }

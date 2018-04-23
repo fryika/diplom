@@ -11,7 +11,8 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
+import { push as changeLocation } from 'react-router-redux';
+import { makeSelectAuthUser } from 'containers/App/selectors';
 import RegisterForm from 'components/RegisterForm/Loadable';
 
 import injectSaga from 'utils/injectSaga';
@@ -23,6 +24,11 @@ import messages from './messages';
 import { changeLogin, changePassword, changeEmail, submit } from './actions';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillMount() {
+    if (this.props.authUser) {
+      this.props.dispatch(changeLocation('/'));
+    }
+  }
   render() {
     return (
       <div>
@@ -54,16 +60,18 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
 }
 
 RegisterPage.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   onChangeLogin: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
   onChangeEmail: PropTypes.func.isRequired,
   onClickSubmit: PropTypes.func.isRequired,
   registerPage: PropTypes.object.isRequired,
+  authUser: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   registerPage: makeSelectRegisterPage(),
+  authUser: makeSelectAuthUser(),
 });
 
 function mapDispatchToProps(dispatch) {

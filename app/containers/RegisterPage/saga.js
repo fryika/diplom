@@ -1,9 +1,12 @@
 import { take, takeLatest, call, put, select, throttle, race } from 'redux-saga/effects';
 import { post } from 'utils/apiRequest';
-import { API_USERS_LOGIN_CHECKER, API_USERS_EMAIL_CHECKER, API_USERS_REGISTER } from 'utils/constants';
+import { LS_TOKEN, API_USERS_LOGIN_CHECKER, API_USERS_EMAIL_CHECKER, API_USERS_REGISTER } from 'utils/constants';
+import { push as changeLocation } from 'react-router-redux';
+import { changeAuthUser } from 'containers/App/actions';
+import { set as setToStorage } from 'utils/ls';
 
 import { SUBMIT_ACTION, CHANGE_LOGIN_ACTION, CHANGE_EMAIL_ACTION, SAGA_LOGIN_CHECKER_CANCEL, SAGA_EMAIL_CHECKER_CANCEL } from './constants';
-import { changeIsLoadingLoginChecker, changeIsLoadingEmailChecker, loginCheckerResponse, loginCheckerFailed, emailCheckerResponse, emailCheckerFailed, changeIsSubmitted, submitFailed } from './actions';
+import { changeIsLoadingLoginChecker, changeIsLoadingEmailChecker, loginCheckerResponse, loginCheckerFailed, emailCheckerResponse, emailCheckerFailed, changeIsSubmitted, submitFailed, submitResponse } from './actions';
 import makeSelectRegisterPage from './selectors';
 
 // Individual exports for testing
@@ -73,7 +76,10 @@ export function* startSubmitting() {
 
   try {
     const resp = yield call(post, API_USERS_REGISTER, { login, password, email });
+    yield call(setToStorage, LS_TOKEN, resp.data.token);
     yield put(submitResponse(resp));
+    yield put(changeAuthUser(resp.data.user));
+    yield put(changeLocation('/'));
   } catch (err) {
     yield put(submitFailed(err));
   }

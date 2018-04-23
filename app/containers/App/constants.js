@@ -10,3 +10,4 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const CHANGE_AUTH_USER_ACTION = 'app/global/CHANGE_AUTH_USER_ACTION';

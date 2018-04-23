@@ -16,6 +16,7 @@ import {
   EMAIL_CHECKER_RESPONSE_ACTION,
   CHANGE_IS_SUBMITTED_ACTION,
   SUBMIT_FAILED_ACTION,
+  SUBMIT_RESPONSE_ACTION,
 } from './constants';
 
 const initialState = fromJS({
@@ -35,6 +36,8 @@ const initialState = fromJS({
 
 function registerPageReducer(state = initialState, action) {
   switch (action.type) {
+    case SUBMIT_RESPONSE_ACTION:
+      return state.set('isSubmitted', false);
     case SUBMIT_FAILED_ACTION:
       return state.set('isSubmitted', false)
         .set('errorMessage', action.error.message);
